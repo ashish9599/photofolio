@@ -1,0 +1,98 @@
+.imageWrapper{
+    margin: 0 auto;
+    max-width: 1024px;
+}
+.imageWrappertop{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.imageWrappertop button{
+    
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.blue{
+    /* background-color: rgba(16, 123, 245, 0.1); */
+    color: #07f;
+    background-color: rgba(0,119,255,.2);
+    border: 2px solid #07f;
+}
+.red{
+    background-color:rgba(246, 2, 2, 0.7);
+    border: 2px solid red ;
+    color: wheat;
+}
+
+.imageWrappertop button:hover{
+    transform: scale(0.94);
+}
+.albumlistContainer{
+    grid-gap: 30px;
+    display: grid;
+    gap: 30px;
+    grid-auto-flow: row;
+    grid-auto-rows: 150px;
+    grid-template: repeat(1,150px) /repeat(auto-fit,minmax(150px,.5fr));
+    margin-bottom: 100px;
+}
+
+.albumlistContainerlist{
+    align-items: center;
+    border: 5px solid #eee;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    /* display: flex; */
+    /* flex-direction: column; */
+    height: 100%;
+    margin-block: 30px;
+    transition: border-color .3s;
+    width: 100%;
+    /* justify-content: flex-end; */
+}
+
+.albumlistContainerlist img{
+    margin-bottom: 30px;
+    width: 50px;
+}
+.albumlistContainerlist a{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+
+}
+.albumlistContainerlist button{
+    /* position: relative; */
+    /* left: 44%; */
+    margin: 6px;
+    color: red;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+.albumlistContainerlist span{background-color: #eee;
+    font-size: 1.1rem;
+    font-weight: 700;
+    justify-self: baseline;
+    padding-block: 5px;
+    text-align: center;
+    transition: .3s;
+    width: 100%;
+}
+.albumlistContainerlist:hover{
+    border-color: #07f;
+    color: #fff;
+}
+.albumlistContainerlist:hover span{
+    background-color: #07f;
+    /* color: #fff; */
+}

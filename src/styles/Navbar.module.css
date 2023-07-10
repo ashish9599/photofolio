@@ -1,0 +1,64 @@
+.navbarWrapper{
+    background-color: rgba(160, 160, 249,0.4);
+    height: 70px;
+    display: flex;
+    gap: 30px;
+}
+.navbarWrapper a{
+    text-decoration: none;
+    color:black;
+    width: 28%;
+}
+.navbarWrapperlogo{
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    height: 100%;
+    margin-left: 50px;
+}
+.navbarWrapperlogo img{
+    height: 70%;
+}
+.navbarWrapperlogo p{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.searchContainer{
+    width: 45%;
+   
+}
+.searchContainer form input{
+    margin-top: 17px;
+    width: 88%;
+    height: 32px;
+    font-size: 21px;
+    border-radius: 10px;
+    border: 1px solid rgb(164, 164, 164);
+    
+}
+.searchContainer form input:focus{
+    border: 1px solid rgb(202, 224, 226) ;
+}
+.searchContainer form button{
+    margin-top: 17px;
+    font-size: 24px;
+    height: 33px;
+    border-radius: 5px;
+    width: 36px;
+    background-color: rgba(160, 160, 249,0);
+    border: none;
+}
+.searchContainer form button img{
+    border-radius: 5px;
+    height: 30px;
+    width: 38px;
+}
+.searchContainer form button:hover{
+    background-color: rgba(160, 160, 249,0.1);
+transform: scale(0.92);
+}
+.searchContainer form {
+    height: 65px;
+    display: flex;
+}

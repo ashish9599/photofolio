@@ -1,0 +1,76 @@
+.imageform{
+    background-color: #bfe3e2;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 0 rgba(99,99,99,.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 50px auto 30px;
+    padding: 20px;
+    border: 1px solid rgb(109, 172, 176);
+    width: 50vw;
+}
+.imageform span{
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.imageform img{
+width: 32px;
+}
+.imageform form{
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 110px;
+}
+.imageform form input{
+    border: 3px solid transparent;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    outline: none;
+    padding: 10px 10px 10px 15px;
+    transition: .3s;
+    width: 60%;
+}
+.imageform form input:focus{
+   border-color: rgb(109, 172, 176);
+       /* border: 1.5px solid rgb(14, 79, 129); */
+}
+.imageform form button:first-of-type {
+    background-color: #ff1300;
+}
+.imageformbuttonWrapper{
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.imageformbuttonWrapper button {
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.24);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    outline: none;
+    padding-block: 10px;
+    width: 110px;
+}
+.update{
+    background-color:green;
+}
+.add {
+    background-color: #07f;
+}
+.imageformbuttonWrapper  button:hover {
+    background-color: rgba(0, 119, 255,0.7);
+    transform: scale(0.93);
+}
+ .imageformbuttonWrapper button:first-of-type:hover{
+        background-color: rgba(255, 19, 0,0.9);
+        
+    }
