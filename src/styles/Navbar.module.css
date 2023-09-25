@@ -1,8 +1,10 @@
 .navbarWrapper{
-    background-color: rgba(160, 160, 249,0.4);
+    background-color: rgb(7 7 98);
     height: 70px;
     display: flex;
     gap: 30px;
+    background-image: linear-gradient(45deg, #b57474, transparent);
+
 }
 .navbarWrapper a{
     text-decoration: none;
@@ -22,6 +24,7 @@
 }
 .navbarWrapperlogo p{
     font-size: 1.2rem;
+    color: white;
     font-weight: 700;
 }
 .searchContainer{
@@ -41,7 +44,7 @@
     border: 1px solid rgb(202, 224, 226) ;
 }
 .searchContainer form button{
-    margin-top: 17px;
+    margin-top: 19px;
     font-size: 24px;
     height: 33px;
     border-radius: 5px;
@@ -61,4 +64,24 @@ transform: scale(0.92);
 .searchContainer form {
     height: 65px;
     display: flex;
+}
+.searchlist{
+    /* background: black; */
+z-index: 10;
+}
+.searchlist ul{
+margin: 0;
+padding-left: 0px;
+}
+.searchlist ul li{
+    list-style: none;
+    color: white;
+    border-bottom: 1px solid #2d2c2c;
+    height: 35px;
+    padding-left: 7px;
+    position: relative;
+    background-color: black;
+}
+.searchlist ul li:hover{
+    background-color: #1e1e1e;
 }

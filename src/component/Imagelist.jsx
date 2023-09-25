@@ -8,21 +8,25 @@ import {onSnapshot, collection} from "firebase/firestore";
 import { toast } from 'react-toastify'
 
 const Imagelist=()=>{
-    
-    const [imageArray,setImage]=useState([]);
+  const [imageArray,setImage]=useState([]);
     const {albumId}=useParams();
+   console.log(albumId);
+
 const{createAlbum,setUpdate,removeImage,updateImage}=useValue();
 useEffect(()=>{
+    // setSearching(true);
     setUpdate(false);
-},[])
+})
+
 useEffect(()=>{
     createAlbum.map((album)=>{
         if(albumId===album.id){
             document.title=album.album
         }
+        return album;
         })
-        
-   },[createAlbum])
+// console.log(typeof(createAlbum));        
+   },[albumId,createAlbum])
 useEffect(()=>{
     const unsub=onSnapshot(collection(db, "albums" ,albumId,'images'),(snapshot)=>{
     // console.log(snapshot);
@@ -35,8 +39,7 @@ useEffect(()=>{
     setImage(images);
     })
     
-    },[])   
-// console.log(imageArray)
+    },[albumId]);   
 const removeImageN=(imageId,albumId)=>{
   removeImage(imageId,albumId);
 toast.success("image deleted succeffully")
@@ -67,7 +70,10 @@ toast.success("image deleted succeffully")
                   <div className={styles.imageContainerframeDelete}>
                    <img onClick={()=>removeImageN(image.id,albumId)} src="https://iridescent-faloodeh-3725ab.netlify.app/assets/trash-bin.png" alt="" />
                  </div>
-                 <img className={styles.imageContainerImg} src={image.imageUrl} alt={image.title} />
+                 <div className={styles.imageContainerImg}>
+
+                 <img className={styles.imageContainerImgB} src={image.imageUrl} alt={image.title} />
+                 </div>
                  <span >{image.title}</span>
              </div>
      ))}

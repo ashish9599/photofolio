@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "./firebase";
-import {getDocs,updateDoc, deleteDoc,onSnapshot, collection,doc ,setDoc} from "firebase/firestore";
+import {updateDoc, deleteDoc,onSnapshot, collection,doc ,setDoc} from "firebase/firestore";
 import { toast } from "react-toastify";
 const photoContext=createContext();
 export const useValue=()=>{
@@ -13,12 +13,10 @@ export const PhotoProvider=({children})=>{
   const [createAlbum,setAlbum]=useState([]);
   const [update,setUpdate]=useState(false);
   const [imageId,setImageId]=useState('');
+const [searching,setSearching]=useState(true);
   // dd
   const [searcN,setSearchN]=useState('');
-const [searchDone,setSearchDone]=useState(false);  
-useEffect(()=>{
-  document.title="AshGall"
-},[])
+const [searchDone,setSearchDone]=useState(true);  
 
 
 useEffect(()=>{
@@ -87,7 +85,9 @@ setImageId(id);
         addPhotos,handleupdate,searchDone,setSearchDone,
           removeImage,  remove,createAlbum
              ,updateImage,update,setUpdate , setSearchN,searcN
-               }}>
+                   ,searching,setSearching
+  
+}}>
              {children}
         </photoContext.Provider>
     )

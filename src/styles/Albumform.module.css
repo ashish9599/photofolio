@@ -1,5 +1,5 @@
 .albumform{
-    background-color: #c1e7e3;
+    background-color: #81aebc;
     border-radius: 10px;
     box-shadow: 0 2px 8px 0 rgba(99,99,99,.2);
     display: flex;
@@ -39,27 +39,26 @@
        /* border: 1.5px solid rgb(14, 79, 129); */
 }
 .albumform form button:first-of-type {
-    background-color: #ff1300;
+    background-color: #a3190db8;
 }
 
 .albumform form button {
-    background-color: #07f;
+    background-color: #154f92;
     border: none;
     border-radius: 7px;
-    box-shadow: 0 3px 8px rgba(0,0,0,.24);
+    box-shadow: 0 4px 3px 0px rgba(0,0,0,.4);
     color: #fff;
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 600;
     outline: none;
     padding-block: 7px;
-    width: 100px;
+    width: 120px;
 }
 .albumform form button:hover {
-    background-color: rgba(0, 119, 255,0.7);
+    background-color: #154f92c7;
     transform: scale(0.93);
 }
- .albumform form button:first-of-type:hover{
-        background-color: rgba(255, 19, 0,0.9);
-        
-    }
+.albumform form button:first-of-type:hover{
+    background-color: #a3190d;    
+}

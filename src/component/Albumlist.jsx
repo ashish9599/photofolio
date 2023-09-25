@@ -7,7 +7,11 @@ import { toast } from 'react-toastify';
 const Albumlist=()=>{
    const [showAlbum,setShowAlbum]=useState(false);
     const {searcN, createAlbum,remove,searchDone,setSearchDone}=useValue();
-   
+
+    useEffect(()=>{
+      document.title="AshGall"
+    },[])
+    
 const removeAl=(id)=>{
    remove(id)
    toast.success("Deleted Succeffully")
@@ -27,12 +31,22 @@ return (
           <div className={styles.albumlistContainer}>
             
             {searcN && searchDone?
+         <div>
+            <div className={styles.albumlisttop}>
+                        <Link to={`/`} onClick={()=>setSearchDone(false)}>
+                    <span>
+                        <img src="https://iridescent-faloodeh-3725ab.netlify.app/assets/back.png" alt="" />
+                    </span>
+                     </Link>
+            </div>
+
         <div className={styles.albumlistContainerlist} key={searcN.id}>
          <button onClick={()=>removeAl(searcN.id)}>X</button>
         <Link to={`/image/${searcN.id}`}>
            <img src="https://iridescent-faloodeh-3725ab.netlify.app/assets/photos.png" alt="" />
            <span>{searcN.album}</span>
         </Link>
+         </div>
    </div>
          :
          createAlbum.map((album,i)=>{
