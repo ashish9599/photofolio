@@ -4,15 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 const Albumform=({setShowAlbum,showAlbum})=>{
     const [AlbumInput,setInputData]=useState('');
-
+  console.log(typeof(AlbumInput));
+  console.log(typeof(''));
     const titleRef =useRef(null);
     const {addPhotos} =useValue();
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(AlbumInput==""){
-            toast.info("Please fill all the fields");
-            return;
-        }
+      
         addPhotos(AlbumInput);
         toast.success("Album Added succeffully")
         setInputData('');

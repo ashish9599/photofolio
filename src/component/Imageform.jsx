@@ -15,7 +15,7 @@ const Imageform=()=>{
   const {update,handleupdate}=useValue();
   const navigate=useNavigate();
   const clearImageInput=(e)=>{
-    // const title=e.target
+    
     setTitle('');
   }
   console.log(update)
@@ -23,7 +23,7 @@ const Imageform=()=>{
     e.preventDefault();
     const title=e.target[0].value;
     const file=e.target[1].files[0];
-    if(title==""||!file){
+    if(!file){
        return toast.info("Please fill the form");
     }
       const storageRef = ref(storage, `Album/${albumid}`);
@@ -69,6 +69,7 @@ return (
             <input type="text"  placeholder='Title' 
             ref={titleRef}
             value={etitle}
+            required
             onChange={(e)=>setTitle(e.target.value)}
             />
                   
