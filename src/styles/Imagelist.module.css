@@ -120,3 +120,63 @@
 .imageContainerframeDelete img{
     width: 35px;   
 }
+@media only screen and (max-width:650px) {
+    .imagelist{
+        max-width: 368px;
+     
+    }
+    .imagelist h2{   
+        font-size: 1rem;
+    }
+    .imagelist button{   
+         font-size: 0.8rem;
+        width: 89px;
+    }
+    
+    .imagelisttop{
+        margin-block: 25px;
+    
+    }
+    .imagelisttop span{
+        width: 33px;
+    }
+    .imagelisttop span img{
+        width: 24px;
+    }
+    .imageContainer{
+        gap: 18px;
+    }
+    .imageContainerImg{
+        height: 100px;
+    }
+    
+    
+    
+    
+    /* imagecon */
+    .imageContainerframe{
+        height: 71%;
+    padding: 20px;
+    /* position: relative; */
+    width: 77%;
+
+    }
+    
+    
+    .imageContainerframei{
+        right: 29px;
+        top: -12px;
+    }
+    .imageContainerframei img{
+        width: 25px;
+    }
+    .imageContainerframeDelete{
+        right: 0px;
+    top: -12px;
+    }
+    .imageContainerframeDelete img{
+        width: 25px;   
+    }
+    
+  }
+  

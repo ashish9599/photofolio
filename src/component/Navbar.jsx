@@ -30,7 +30,7 @@ const Navbar=()=>{
     return (
     <>
     <div className={styles.navbarWrapper}>
-           <Link to={'/'} >
+           <Link to={'/'} className={styles.link} >
         <div className={styles.navbarWrapperlogo}>
             <img src="https://iridescent-faloodeh-3725ab.netlify.app/assets/logo.png" alt="" />
             <p>AshGall</p>

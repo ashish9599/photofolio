@@ -1,32 +1,61 @@
 import styles from '../styles/Imageform.module.css'
+import { storage } from "../firebase";
+
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useValue } from '../photoContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
+
 const Imageform=()=>{
-  const [ImageInput,setImageData]=useState({title:"",imageUrl:""});
-  // setupdate
+  const [etitle,setTitle]=useState('');
   const titleRef =useRef(null);
   const {albumid}=useParams();
   const {update,handleupdate}=useValue();
   const navigate=useNavigate();
-  const clearImageInput=()=>{
-    setImageData({title:"",imageUrl:""});
+  const clearImageInput=(e)=>{
+    // const title=e.target
+    setTitle('');
   }
- const handleImageSubmit=async(e,albumid)=>{
-  e.preventDefault();
-  if(ImageInput.imageUrl==""||ImageInput.title==""){
-    toast.info("Please fill all the fields")
-    return;
-  }
-  handleupdate(albumid,ImageInput,update);
-  setImageData({title:"",imageUrl:""});
-  navigate(`/image/${albumid}`)
+  console.log(update)
+  const handleImageSubmit=async(e,albumid)=>{
+    e.preventDefault();
+    const title=e.target[0].value;
+    const file=e.target[1].files[0];
+    if(title==""||!file){
+       return toast.info("Please fill the form");
     }
+      const storageRef = ref(storage, `Album/${albumid}`);
+    //  if(!update){
+       await  uploadBytesResumable(storageRef, file)
+    //  }else{
+      // Create a reference to the file whose metadata we want to change
+// var forestRef = storageRef.child('images/forest.jpg');
+
+// // Create file metadata to update
+// var newMetadata = {
+//   cacheControl: 'public,max-age=300',
+//   contentType: 'image/jpeg'
+// };
+
+// // Update metadata properties
+// forestRef.updateMetadata(newMetadata)
+//   .then((metadata) => {
+//     // Updated metadata for 'images/forest.jpg' is returned in the Promise
+//   }).catch((error) => {
+//     // Uh-oh, an error occurred!
+//   });
+    //  }
+      const imageUrl=await getDownloadURL(storageRef);
+      handleupdate(albumid,title,imageUrl,update);
+      setTitle("");
+      navigate(`/image/${albumid}`)
+}
 useEffect(()=>{
   titleRef.current.focus();
  },[])
+ 
 return (
         <>
          <div  className={styles.imageform}>
@@ -37,19 +66,20 @@ return (
         </Link>
         <span>{update?"Update Image":"Create Image"}</span>
         <form action="" onSubmit={(e)=>handleImageSubmit(e,albumid)}>
-            <input type="text"  placeholder='Title' required
-            value={ImageInput.title}
+            <input type="text"  placeholder='Title' 
             ref={titleRef}
-            onChange={(e)=>setImageData({title:e.target.value,imageUrl:ImageInput.imageUrl})}
+            value={etitle}
+            onChange={(e)=>setTitle(e.target.value)}
             />
-            <input type="text" placeholder='Image Url' required
-            value={ImageInput.imageUrl}
-             onChange={(e)=>setImageData({title:ImageInput.title,imageUrl:e.target.value})}
-           
-            />
+                  
+            <input  style={{ display: "none" }} type="file" id="file" />
+          <label htmlFor="file">
+            <img src="https://iridescent-faloodeh-3725ab.netlify.app/assets/photos.png" alt="" />        
+            <span>Add an Image</span>
+          </label>
             <div className={styles.imageformbuttonWrapper}> 
 
-            <button onClick={()=>clearImageInput()}>Clear</button>
+            <button onClick={(e)=>clearImageInput(e)}>Clear</button>
               <button type='submit' className={update?styles.update:styles.add}> {update?"Update":"Add"}</button>
             </div>
            </form>

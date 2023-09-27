@@ -20,7 +20,7 @@ const [searchDone,setSearchDone]=useState(true);
 
 
 useEffect(()=>{
-const unsub=onSnapshot(collection(db,"albums"),(snapshot)=>{
+onSnapshot(collection(db,"albums"),(snapshot)=>{
 // console.log(snapshot);
   const album=snapshot.docs.map((doc)=>{ 
      return {
@@ -39,13 +39,13 @@ const addPhotos=async(AlbumInput)=>{
     createdOn:new Date()
   });
 }
- const handleupdate=async(albumId,ImageInput,update)=>{
+ const handleupdate=async(albumId,title,imageUrl,update)=>{
     // e.preventDefault()
     if(!update){
        const docRef=doc(collection(db, "albums" ,albumId,'images'));
       await setDoc(docRef, {
-        title:ImageInput.title,
-        imageUrl:ImageInput.imageUrl,
+        title:title,
+        imageUrl:imageUrl,
         createdOn:new Date()
       });
       toast.success(" Image Added succeffuly")
@@ -53,8 +53,8 @@ const addPhotos=async(AlbumInput)=>{
     }else{
       const docRef=doc(db,"albums",albumId ,"images",imageId);
       await updateDoc(docRef,{
-        title:ImageInput.title,
-        imageUrl:ImageInput.imageUrl,
+        title:title,
+        imageUrl:imageUrl,
       });
       toast.success(" Image updated succeffuly")
       setUpdate(!update);

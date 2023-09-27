@@ -62,3 +62,32 @@
 .albumform form button:first-of-type:hover{
     background-color: #a3190d;    
 }
+@media only screen and (max-width:650px) {
+    
+    
+    .albumform span{
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+    .albumform form{
+    display: flex;
+    margin-top: 5px;
+    flex-direction: column;
+    }
+    .albumform form input{
+        border: 3px solid rgb(149, 149, 215); 
+        border-radius: 7px;
+        font-size: 0.7rem;
+        width: 88%; 
+        padding: 7px 7px 7px 8px;
+    }
+    
+    
+    .albumform form button {
+    
+        border-radius: 3px;
+    font-size: 0.7rem;
+    width: 50px;
+    }
+  }
+  

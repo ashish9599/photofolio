@@ -3,14 +3,15 @@ import {Link} from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useValue } from '../photoContext'
 import { useEffect, useState } from 'react'
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
 import {onSnapshot, collection} from "firebase/firestore";
 import { toast } from 'react-toastify'
+import { deleteObject, ref } from 'firebase/storage'
 
 const Imagelist=()=>{
   const [imageArray,setImage]=useState([]);
     const {albumId}=useParams();
-   console.log(albumId);
+  //  console.log(albumId);
 
 const{createAlbum,setUpdate,removeImage,updateImage}=useValue();
 useEffect(()=>{
@@ -28,7 +29,7 @@ useEffect(()=>{
 // console.log(typeof(createAlbum));        
    },[albumId,createAlbum])
 useEffect(()=>{
-    const unsub=onSnapshot(collection(db, "albums" ,albumId,'images'),(snapshot)=>{
+   onSnapshot(collection(db, "albums" ,albumId,'images'),(snapshot)=>{
     // console.log(snapshot);
       const images=snapshot.docs.map((doc)=>{ 
          return {
@@ -40,9 +41,18 @@ useEffect(()=>{
     })
     
     },[albumId]);   
-const removeImageN=(imageId,albumId)=>{
-  removeImage(imageId,albumId);
-toast.success("image deleted succeffully")
+
+    // console.log(imageArray);
+const removeImageN=async(imageId,albumId)=>{
+
+  const storageRef = ref(storage, `Album/${albumId}`);
+  
+  await deleteObject(storageRef).then(() => {
+    removeImage(imageId,albumId);
+    toast.success("image deleted succeffully")
+     }).catch((error) => {
+         toast.error(error);
+     });
 }
     return (
    <>
