@@ -1,182 +1,172 @@
-.imagelist{
-    margin: 0 auto;
-    max-width: 1024px;
+.imagelist {
+  margin: 0 auto;
+  max-width: 1024px;
 }
-.imagelist h2{   
-     font-size: 1.7rem;
-    font-weight: 700;
+.imagelist h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
 }
-.imagelist button{ 
-    background-color: #154f92;
-    border: none;
-    border-radius: 7px;
-    box-shadow: 0 4px 3px 0px rgba(0,0,0,.4);
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    outline: none;
-    padding-block: 7px;
-    width: 120px;
+.imagelist button {
+  background-color: #154f92;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 4px 3px 0px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  outline: none;
+  padding-block: 7px;
+  width: 120px;
 }
-.imagelist button:hover{
-    background-color: #154f92c7;
-    transform: scale(0.93);
+.imagelist button:hover {
+  background-color: #154f92c7;
+  transform: scale(0.93);
 }
-.imagelisttop{
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-block: 30px;
+.imagelisttop {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-block: 30px;
 }
-.imagelisttop span{
-    align-items: center;
-    aspect-ratio: 1;
-    background-color: #fcfcfc;
-    border-radius: 50%;
-    /* box-shadow: 0 4px 9px rgba(10, 10, 10, 0.8); */
-    box-shadow:    black 1px 2px 2px 1px;
-    /* box-shadow: 0 4px 9px; */
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    margin-right: 30px;
-    width: 50px;
+.imagelisttop span {
+  align-items: center;
+  aspect-ratio: 1;
+  background-color: #fcfcfc;
+  border-radius: 50%;
+  /* box-shadow: 0 4px 9px rgba(10, 10, 10, 0.8); */
+  box-shadow: black 1px 2px 2px 1px;
+  /* box-shadow: 0 4px 9px; */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-right: 30px;
+  width: 50px;
 }
-.imagelisttop span img{
-    width: 30px;
+.imagelisttop span img {
+  width: 30px;
 }
-.imageContainer{
-    display: grid;
-    gap: 150px;
-    grid-auto-flow: row;
-    grid-auto-rows: 150px;
-    grid-template: repeat(1,150px) /repeat(auto-fit,minmax(175px,.5fr));
-    margin-bottom: 50px;
+.imageContainer {
+  display: grid;
+  gap: 150px;
+  grid-auto-flow: row;
+  grid-auto-rows: 150px;
+  grid-template: repeat(1, 150px) / repeat(auto-fit, minmax(175px, 0.5fr));
+  margin-bottom: 50px;
 }
-.imageContainerImg{
-    height: 145px;
+.imageContainerImg {
+  height: 145px;
 }
-.imageContainerImgB{
-    height: 100%;
-    width: 100%;
-    display: block;
-   
-    transition: transform 700ms;
+.imageContainerImgB {
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  transition: transform 700ms;
 }
-.imageContainerImgB:hover{
-    transform: scale(0.9);
+.imageContainerImgB:hover {
+  transform: scale(0.9);
 }
 
-.imageContainerframe:hover .imageContainerframei{
-    z-index: 10;
-    display:block;
+.imageContainerframe:hover .imageContainerframei {
+  z-index: 10;
+  display: block;
 }
-.imageContainerframe:hover .imageContainerframeDelete{
-    z-index: 10;
-    display:block;
+.imageContainerframe:hover .imageContainerframeDelete {
+  z-index: 10;
+  display: block;
 }
-.imageContainer span{
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
+.imageContainer span {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
 }
-.imageContainerframe{
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 1px 2px 2px 1px rgba(99,99,99,.2);
-    /* box-sizing: border-box; */
-   
-    cursor: pointer;
-    height: 100%;
-    padding: 29px;
-    position: relative;
-    width: 100%;
+.imageContainerframe {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px 1px rgba(99, 99, 99, 0.2);
+  /* box-sizing: border-box; */
+
+  cursor: pointer;
+  height: 100%;
+  padding: 29px;
+  position: relative;
+  width: 100%;
 }
 
+.imageContainerframei {
+  border: none;
+  display: none;
+  outline: none;
+  position: absolute;
+  right: 27px;
+  top: -27px;
+  transition: 0.3s;
+}
+.imageContainerframei img {
+  width: 35px;
+}
+.imageContainerframeDelete {
+  display: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  right: -15px;
+  top: -27px;
+  transition: 0.3s;
+}
+.imageContainerframeDelete img {
+  width: 35px;
+}
+@media only screen and (max-width: 650px) {
+  .imagelist {
+    max-width: 368px;
+  }
+  .imagelist h2 {
+    font-size: 1rem;
+  }
+  .imagelist button {
+    font-size: 0.8rem;
+    width: 89px;
+  }
 
-.imageContainerframei{
-    border: none;
-    display: none;
-    outline: none;
-    position: absolute;
-    right: 27px;
-    top: -27px;
-    transition: .3s;
-}
-.imageContainerframei img{
-    width: 35px;
-}
-.imageContainerframeDelete{
-    display: none;
-    border: none;
-    outline: none;
-    position: absolute;
-    right: -15px;
-    top: -27px;
-    transition: .3s;
-}
-.imageContainerframeDelete img{
-    width: 35px;   
-}
-@media only screen and (max-width:650px) {
-    .imagelist{
-        max-width: 368px;
-     
-    }
-    .imagelist h2{   
-        font-size: 1rem;
-    }
-    .imagelist button{   
-         font-size: 0.8rem;
-        width: 89px;
-    }
-    
-    .imagelisttop{
-        margin-block: 25px;
-    
-    }
-    .imagelisttop span{
-        width: 33px;
-    }
-    .imagelisttop span img{
-        width: 24px;
-    }
-    .imageContainer{
-        gap: 18px;
-    }
-    .imageContainerImg{
-        height: 100px;
-    }
-    
-    
-    
-    
-    /* imagecon */
-    .imageContainerframe{
-        height: 71%;
+  .imagelisttop {
+    margin-block: 25px;
+  }
+  .imagelisttop span {
+    width: 33px;
+  }
+  .imagelisttop span img {
+    width: 24px;
+  }
+  .imageContainer {
+    gap: 18px;
+  }
+  .imageContainerImg {
+    height: 100px;
+  }
+
+  /* imagecon */
+  .imageContainerframe {
+    height: 71%;
     padding: 20px;
     /* position: relative; */
     width: 77%;
-
-    }
-    
-    
-    .imageContainerframei{
-        right: 29px;
-        top: -12px;
-    }
-    .imageContainerframei img{
-        width: 25px;
-    }
-    .imageContainerframeDelete{
-        right: 0px;
-    top: -12px;
-    }
-    .imageContainerframeDelete img{
-        width: 25px;   
-    }
-    
   }
-  
+
+  .imageContainerframei {
+    right: 29px;
+    top: -12px;
+  }
+  .imageContainerframei img {
+    width: 25px;
+  }
+  .imageContainerframeDelete {
+    right: 0px;
+    top: -12px;
+  }
+  .imageContainerframeDelete img {
+    width: 25px;
+  }
+}

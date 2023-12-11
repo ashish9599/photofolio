@@ -1,46 +1,69 @@
 import styles from "../styles/Imageform.module.css";
-import { storage } from "../firebase";
+import { db, storage } from "../firebase";
 
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 import { useValue } from "../context/photoContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { doc, onSnapshot } from "firebase/firestore";
 
-const Imageform = () => {
+const Updateform = () => {
   const [etitle, setTitle] = useState("");
   const titleRef = useRef(null);
   const { albumid } = useParams();
-  const { addImage, setloader } = useValue();
+  const { uploadImage, imgPath, imageId, setloader } = useValue();
   const navigate = useNavigate();
   const clearImageInput = (e) => {
     setTitle("");
   };
+
+  useEffect(() => {
+    onSnapshot(doc(db, "albums", albumid, "images", imageId), (snapshot) => {
+      const image=snapshot.data();
+      setTitle(image.title);
+    });
+    // console.log("in=>",singleImage)
+  }, [imageId, albumid]);
+
   const handleImageSubmit = async (e, albumid) => {
     e.preventDefault();
-    setloader(true);
+    setloader(true)
     const title = e.target[0].value;
     const file = e.target[1].files[0];
     if (!file) {
       return toast.info("Please fill the form");
     }
     navigate(`/image/${albumid}`);
-    // console.log("file=>",file);
-    try {
-      const storageRef = ref(storage, `Album/${Date.now()}-${title}`);
-      await uploadBytesResumable(storageRef, file).then((upload) => {
-        let imagePath = upload.metadata.fullPath;
-        getDownloadURL(storageRef).then((imageUrl) => {
-          addImage(albumid, title, imageUrl, imagePath);
+      const storageDel = ref(storage, imgPath);
+      await deleteObject(storageDel)
+        .then(() => {
+          toast.success("image deleted succeffully");
+        })
+        .catch((error) => {
+          toast.error(error);
         });
-      });
-    } catch (error) {
-      console.log(error);
-    }
-    setTitle("");
-    setloader(false);
-  };
+        try {
+          const storageRef = ref(storage, `Album/${Date.now()}-${title}`);
+          await uploadBytesResumable(storageRef, file).then((upload) => {
+            const imagePath = upload.metadata.fullPath;
+            getDownloadURL(storageRef).then((imageUrl) => {
+              uploadImage(albumid, title, imageUrl, imagePath);
+            });
+          });
+    
+        } catch (error) {
+          console.log(error);
+        }
+        setTitle("");
+        setloader(false)
+      };
   useEffect(() => {
     titleRef.current.focus();
   }, []);
@@ -73,12 +96,12 @@ const Imageform = () => {
               src="https://iridescent-faloodeh-3725ab.netlify.app/assets/photos.png"
               alt=""
             />
-            <span>Add an Image</span>
+            <span>Update an Image</span>
           </label>
           <div className={styles.imageformbuttonWrapper}>
             <button onClick={(e) => clearImageInput(e)}>Clear</button>
             <button type="submit" className={styles.add}>
-              Add
+              Update
             </button>
           </div>
         </form>
@@ -86,4 +109,4 @@ const Imageform = () => {
     </>
   );
 };
-export default Imageform;
+export default Updateform;
